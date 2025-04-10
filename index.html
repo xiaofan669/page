@@ -96,7 +96,133 @@ img.addEventListener('load', function(e) {
 });
 </script>
 <div id="footer">
-    <p>Powered by helloweba.com  允许转载、修改和使用本站的DEMO，但请注明出处：<a href="http://www.helloweba.com">www.helloweba.com</a></p>
+<p>Powered by <a href="http://www.helloweba.com">helloweba.com</a> <a style="color: red;">Admin:XiaoFan669</a>
+    <!DOCTYPE html>
+
+<html>
+
+
+<head>
+
+
+    <title>显示当前时间</title>
+
+
+    <script type="text/javascript">
+
+function displayDateTime() {
+
+var now = new Date();
+
+
+var year = now.getFullYear();
+
+
+var month = now.getMonth() + 1;
+
+
+var day = now.getDate();
+
+
+var hours = now.getHours();
+
+
+var minutes = now.getMinutes();
+
+
+var seconds = now.getSeconds();
+
+
+if (month < 10) month = '0' + month;
+
+
+if (day < 10) day = '0' + day;
+
+
+if (hours < 10) hours = '0' + hours;
+
+
+if (minutes < 10) minutes = '0' + minutes;
+
+
+if (seconds < 10) seconds = '0' + seconds;
+
+
+var dateString = year + '-' + month + '-' + day;
+
+
+var timeString = hours + ':' + minutes + ':' + seconds;
+
+
+document.getElementById('datetime').innerHTML = dateString + ' ' + timeString;
+
+
+}
+
+
+setInterval(displayDateTime, 1000);
+
+
+        function displayTime() {
+
+
+            var now = new Date();
+
+
+            var hours = now.getHours();
+
+
+            var minutes = now.getMinutes();
+
+
+            var seconds = now.getSeconds();
+
+
+            // 格式化时间
+
+
+            if (hours < 10) hours = '0' + hours;
+
+
+            if (minutes < 10) minutes = '0' + minutes;
+
+
+            if (seconds < 10) seconds = '0' + seconds;
+
+
+            var timeString = hours + ':' + minutes + ':' + seconds;
+
+
+            document.getElementById('time').innerHTML = timeString;
+
+
+        }
+
+
+        // 设置定时器每秒更新一次
+
+
+        setInterval(displayTime, 1000);
+
+
+    </script>
+
+
+</head>
+
+
+<body onload="displayTime()">
+
+
+    <h2>当前时间是：<span id="datetime"></span></h2>
+
+
+</body>
+
+
+</html>
+
+
 </div>
 </body>
 </html>
