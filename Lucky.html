@@ -258,6 +258,14 @@ setInterval(displayDateTime, 1000);
 
 
 </head>
+
+<script>
+// 最大化窗口
+window.moveTo(0, 0);
+if (window.outerWidth < screen.width || window.outerHeight < screen.height) {
+    window.resizeTo(screen.width, screen.height);
+}
+</script>
 </body>
 </html>
 </div>
