@@ -1,4 +1,4 @@
-# web.school.card
+# web-school.card
 
 本项目原创“[helloweba.com](helloweba.com "Powered by helloweba.com")”本项目在其基础上二改。
 
