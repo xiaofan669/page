@@ -1,1 +1,1 @@
-# web-school.card
+# page
