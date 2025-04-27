@@ -44,7 +44,6 @@ class LotteryProgram(QMainWindow):
         # 主窗口设置
         self.setWindowTitle('抽奖程序')
         self.setWindowFlags(Qt.WindowStaysOnTopHint)
-        self.setWindowOpacity(0.8)
         
         # 中央部件
         central_widget = QWidget()
@@ -52,7 +51,7 @@ class LotteryProgram(QMainWindow):
         layout = QVBoxLayout(central_widget)
         
         # Editor标签
-        editor_label = QLabel('Editor: <a href="https://github.com/xiaofan669/web-school.card">XiaoFan669</a>''<p>当前版本：v1.2(0428版)</p>''<p>请在10秒钟内点击“停止抽奖”,不然程序将报错!</p>')
+        editor_label = QLabel('Editor: <a href="https://github.com/xiaofan669/web-school.card">XiaoFan669</a>''<p style="color:purple;">当前版本：v1.2(0428版) <a style="color:red;">请点击下方按钮抽取PK项目，一切交给命运！</p>''<p style="color:green;">若想继续使用且不遮挡屏幕，请点击最小化按钮。最小化后如果还想继续抽奖请点击桌面右侧”转“字。</p>')
         editor_label.setOpenExternalLinks(True)
         editor_label.setAlignment(Qt.AlignCenter)
         editor_label.setFont(QFont('Genshin Impact 233', 12))
@@ -71,7 +70,7 @@ class LotteryProgram(QMainWindow):
         layout.addWidget(self.stop_button)
         
         # 抽奖选项
-        self.options = ['英译汉20', '英译汉30', '汉译英20', '汉译英30', '听音选词40', '听音选词50']
+        self.options = ['英译汉20 (常规)', '英译汉30 (常规)', '汉译英20 (常规)', '汉译英30 (常规)', '听音选词40 (抢答)', '听音选词50 (抢答)','听音选词30 (抢答)','中英速配30秒 (限时)','中英速配60秒 (限时)','中英速配120秒 (限时)','看中拼词10 (常规)','看中拼词20 (常规)']
         self.current_index = 0
         self.is_rolling = False
         
@@ -86,9 +85,9 @@ class LotteryProgram(QMainWindow):
         self.move(frame_geometry.topLeft())
         
     def setupTimers(self):
-        # 闲置计时器 (20秒)
+        # 闲置计时器 (改为12秒)
         self.idle_timer.timeout.connect(self.handleIdleTimeout)
-        self.idle_timer.start(20000)
+        self.idle_timer.start(12000)  # 修改为12000毫秒(12秒)
         
         # 自动停止计时器 (9.5秒)
         self.auto_stop_timer.timeout.connect(self.autoStopLottery)
@@ -103,7 +102,7 @@ class LotteryProgram(QMainWindow):
         self.is_rolling = True
         self.roll_timer.start(50)
         self.auto_stop_timer.start(9500)  # 9.5秒后自动停止
-        self.idle_timer.start(20000)  # 重置闲置计时器
+        self.idle_timer.start(12000)  # 重置闲置计时器(改为12秒)
         
     def autoStopLottery(self):
         if self.is_rolling:
@@ -124,19 +123,19 @@ class LotteryProgram(QMainWindow):
     def showResult(self, result):
         self.result_window = QMainWindow()
         self.result_window.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint)
-        self.result_window.setWindowOpacity(0.8)
+        self.result_window.setWindowOpacity(0.75)  # 修改为65%透明度
         
         screen = QApplication.desktop().screenGeometry()
         self.result_window.setGeometry(screen)
         
         result_label = QLabel(result, self.result_window)
         result_label.setAlignment(Qt.AlignCenter)
-        result_label.setFont(QFont('Arial', 48, QFont.Bold))
+        result_label.setFont(QFont('Honkai Impact3', 72, QFont.Bold))
         result_label.setGeometry(QRect(0, 0, screen.width(), screen.height()))
         
         self.result_window.show()
         QTimer.singleShot(2000, self.result_window.close)
-        self.idle_timer.start(20000)  # 重置闲置计时器
+        self.idle_timer.start(12000)  # 重置闲置计时器(改为12秒)
         
     def handleIdleTimeout(self):
         self.showMinimized()
@@ -145,7 +144,7 @@ class LotteryProgram(QMainWindow):
     def showFloatingWindow(self):
         self.floating_window = DraggableWindow()
         self.floating_window.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint | Qt.Tool)
-        self.floating_window.setWindowOpacity(0.8)
+        self.floating_window.setWindowOpacity(0.75)  # 修改为65%透明度
         
         window_width = 100
         window_height = 100
@@ -189,10 +188,10 @@ class LotteryProgram(QMainWindow):
                 QTimer.singleShot(1000, self.showFloatingWindow)
                 
     def mouseMoveEvent(self, event):
-        self.idle_timer.start(20000)  # 重置闲置计时器
+        self.idle_timer.start(12000)  # 重置闲置计时器(改为12秒)
         
     def keyPressEvent(self, event):
-        self.idle_timer.start(20000)  # 重置闲置计时器
+        self.idle_timer.start(12000)  # 重置闲置计时器(改为12秒)
         
     def closeEvent(self, event):
         if hasattr(self, 'result_window'):
