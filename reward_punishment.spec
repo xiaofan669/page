@@ -5,7 +5,7 @@ a = Analysis(
     ['reward_punishment.py'],
     pathex=[],
     binaries=[],
-    datas=[('Lucky.html', '.'), ('UnLucky.html', '.')],
+    datas=[],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
