@@ -213,26 +213,5 @@ setInterval(displayDateTime, 1000);
 <div id="footer">
     <p>© 2025 XiaoFan669 All Rights Reserved.</p>
 </div>
-
-<script>
-// 兼容Windows 7的全屏代码
-function resizeWindow() {
-    try {
-        window.moveTo(0, 0);
-        if (document.all) {
-            top.window.resizeTo(screen.availWidth, screen.availHeight);
-        } else if (window.launch) {
-            window.launch().then(function() {
-                window.resizeTo(screen.availWidth, screen.availHeight);
-            });
-        } else {
-            window.resizeTo(screen.width, screen.height);
-        }
-    } catch(e) {
-        console.log("全屏错误: " + e.message);
-    }
-}
-window.onload = resizeWindow;
-</script>
 </body>
 </html>
